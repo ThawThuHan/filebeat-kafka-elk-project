@@ -1,0 +1,12 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/*.log  # Adjust this path to the log files you want to read
+      - /var/log/secure
+
+output.kafka:
+  hosts: ["kafka:9092"]
+  topic: "logstash-input"
+  codec.json:
+    pretty: true
